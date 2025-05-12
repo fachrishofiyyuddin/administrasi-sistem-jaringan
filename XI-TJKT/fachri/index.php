@@ -25,7 +25,7 @@
 <body>
     <div class="container">
         <h1>Selamat Datang di Web Profil Saya</h1>
-        <img src="img/foto.jpg" alt="Foto Profil" width="150">
+        <img src="img/poto.png" alt="Foto Profil" width="150">
         <p>Nama: Fachri Shofiyyuddin Ahmad</p>
         <p>Kelas: XI TJKT 2</p>
         <p>Hobi: Membuat Website</p>
