@@ -9,9 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_ext = pathinfo($file["name"], PATHINFO_EXTENSION);
 
         if ($file_ext == "zip") {
-            $filename = "webprofil_" . strtolower(str_replace(" ", "_", $nama_siswa)) . ".zip";
+            $filename = "webprofil_" . strtolower(str_replace(" ", "_", $nama_siswa)) . "_" . basename($file["name"]);
             $destination = $upload_dir . $filename;
 
+            // Cek apakah file berhasil dipindahkan ke folder uploads
             if (move_uploaded_file($file["tmp_name"], $destination)) {
                 $message = "✅ File berhasil diupload!";
             } else {
@@ -27,22 +28,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Proyek Web Profil</title>
     <style>
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             margin: 30px;
+            background-color: #f9f9f9;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
+            padding: 30px;
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
         }
 
         input,
@@ -50,15 +60,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: block;
             width: 100%;
             margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
 
         .msg {
             margin-top: 20px;
             font-weight: bold;
+            text-align: center;
+            color: #333;
         }
 
         ul {
             margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -67,11 +115,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h2>Upload Proyek Web Profil (ZIP)</h2>
         <form method="POST" enctype="multipart/form-data">
-            <label>Nama Siswa:</label>
-            <input type="text" name="nama" required>
+            <label for="nama">Nama Siswa:</label>
+            <input type="text" id="nama" name="nama" required>
 
-            <label>File ZIP:</label>
-            <input type="file" name="file_project" accept=".zip" required>
+            <label for="file_project">File ZIP:</label>
+            <input type="file" id="file_project" name="file_project" accept=".zip" required>
 
             <button type="submit">Upload</button>
         </form>
