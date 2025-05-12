@@ -24,12 +24,11 @@
 
 <body>
     <div class="container">
-        <h1>Selamat Datang di Web Profil Saya</h1>
-        <img src="img/poto.png" alt="Foto Profil" width="150">
+        <h2>Selamat Datang di Web Profil Saya</h2>
+        <img src="img/poto2.jpeg" alt="Foto Profil" width="100">
         <p>Nama: Fachri Shofiyyuddin Ahmad</p>
-        <p>Kelas: XI TJKT 2</p>
+        <p>Kelas: XI TJKT 3</p>
         <p>Hobi: Membuat Website</p>
-        <p>No. Absen : 00</p>
     </div>
 </body>
 
